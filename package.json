@@ -1,0 +1,23 @@
+{
+  "main": "src/index.js",
+  "name": "eighties-japan-jukebox",
+  "author": {
+    "url": "https://github.com/allboswe",
+    "name": "Allan Boswell",
+    "email": "144160365+allboswe@users.noreply.github.com"
+  },
+  "license": "AGPL-3.0-only",
+  "private": true,
+  "scripts": {
+    "start": "node ."
+  },
+  "version": "1.0.0",
+  "description": "A free, open-source Discord bot that streams Japanese music from the 1980s.",
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5"
+  }
+}
