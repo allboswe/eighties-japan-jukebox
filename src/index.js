@@ -21,7 +21,12 @@ process.on("SIGINT", function () {
   });
 });
 
-mongoose.connect().then(() => {
-  winston.container.info("Successfully connected to MongoDB Atlas.");
-  application.connect();
+application.registerApplicationCommands().then(() => {
+  winston.container.info("Successfully registered application commands.");
+  mongoose.connect().then(() => {
+    winston.container.info("Successfully connected to MongoDB Atlas.");
+    application.connect().then(() => {
+      winston.container.info("Successfully connected to Discord.");
+    });
+  });
 });
