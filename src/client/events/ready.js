@@ -6,6 +6,10 @@ module.exports = {
   name: Events.ClientReady,
   once: true,
   execute(client) {
-    client.winston.info(`${client.user.tag} is ready.`);
+    try {
+      client.winston.info(`${client.user.tag} is ready.`);
+    } catch (error) {
+      client.winston.error(error.stack);
+    }
   },
 };
