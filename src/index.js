@@ -21,6 +21,26 @@ process.on("SIGINT", function () {
   });
 });
 
+process.on("uncaughtException", function (error) {
+  winston.container.error(error.stack);
+  application.disconnect().then(() => {
+    winston.container.info("Successfully disconnected from Discord.");
+    mongoose.disconnect().then(() => {
+      winston.container.info("Successfully disconnected from MongoDB Atlas.");
+    });
+  });
+});
+
+process.on("unhandledRejection", function (error) {
+  winston.container.error(error.stack);
+  application.disconnect().then(() => {
+    winston.container.info("Successfully disconnected from Discord.");
+    mongoose.disconnect().then(() => {
+      winston.container.info("Successfully disconnected from MongoDB Atlas.");
+    });
+  });
+});
+
 application.registerApplicationCommands().then(() => {
   winston.container.info("Successfully registered application commands.");
   mongoose.connect().then(() => {
