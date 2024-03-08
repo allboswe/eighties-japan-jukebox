@@ -52,6 +52,7 @@ class Winston {
         winston.format.printf(({ level, message, timestamp }) => {
           return `${timestamp} [${level.toUpperCase()}] ${message}`;
         }),
+        winston.format.errors({ stack: true }),
         winston.format.colorize({ all: true }),
       ),
     });
