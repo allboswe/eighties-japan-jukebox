@@ -94,10 +94,18 @@ class Application {
     });
   }
 
+  /**
+   * @public
+   * @returns {Promise<string>}
+   */
   async connect() {
     return await this.client.login(process.env.DISCORD_TOKEN);
   }
 
+  /**
+   * @public
+   * @returns {Promise<void>}
+   */
   async disconnect() {
     return await this.client.destroy();
   }
