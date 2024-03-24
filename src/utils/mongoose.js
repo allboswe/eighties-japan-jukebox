@@ -22,6 +22,8 @@
 
 const mongoose = require("mongoose");
 
+const Track = require("../models/tracks");
+
 class Mongoose {
   constructor() {}
 
@@ -64,6 +66,12 @@ class Mongoose {
    */
   async disconnect() {
     return await mongoose.disconnect();
+  }
+
+  async insertTrack(metadata) {
+    const track = new Track(metadata);
+
+    return await track.save();
   }
 }
 
